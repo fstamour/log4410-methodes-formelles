@@ -1,0 +1,1 @@
+./spin.exe -T q1.pml 
