@@ -2,7 +2,7 @@
 
 model: model.pml
 	spin -a model.pml
-	cc -DSAFETY pan.c -o $@
+	cc -DNOREDUCE -DSAFETY pan.c -o $@
 
 .PHONY: run-model
 run-model:

@@ -73,7 +73,7 @@ proctype guichet()
 proctype station(station_id_t id)
 {
     printf("Station %d: Je demarre\n", id);
-    client_id_t client_id;
+    client_id_t client_id = -1;
     mtype order;
     do
         // Attendre une commande et la recuperer
@@ -81,6 +81,7 @@ proctype station(station_id_t id)
             // Accueillir le client et lui delivrer sa commande
             printf("Station %d: J'accueille le client %d et je lui delivre sa commande %e\n", id, client_id, order);
             client_station[client_id]!id;
+            client_id = -1; 
     od
 }
 
@@ -92,6 +93,7 @@ init {
     for (i : 1 .. NB_STATION) {
         run station(i);
     }
+    ltl { always (station[0]:client_id > -1) -> (station[0]:client_id != station[1]:client_id)};
 
     atomic {
         for (i : 0 .. NB_CLIENT-1) {
