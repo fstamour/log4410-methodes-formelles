@@ -1,4 +1,4 @@
-!/bin/sh -e
+#!/bin/sh -e
 
 SPIN='./spin.exe'
 if [ ! -f "$SPIN" ]; then
