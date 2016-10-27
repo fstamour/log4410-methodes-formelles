@@ -1,8 +1,8 @@
 
 
-model: model.pml
+model: model.pml makefile
 	spin -a model.pml
-	cc -DNOREDUCE -DSAFETY pan.c -o $@
+	cc -DNOREDUCE pan.c -o $@
 
 .PHONY: run-model
 run-model:

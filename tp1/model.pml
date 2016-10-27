@@ -75,9 +75,13 @@ proctype station(station_id_t id)
     printf("Station %d: Je demarre\n", id);
     client_id_t client_id = -1;
     mtype order;
+    
+
     do
         // Attendre une commande et la recuperer
-        ::  pending_order?client_id, order;
+        :: 
+            pending_order?client_id, order;
+        order_taken:
             // Accueillir le client et lui delivrer sa commande
             printf("Station %d: J'accueille le client %d et je lui delivre sa commande %e\n", id, client_id, order);
             client_station[client_id]!id;
@@ -93,7 +97,17 @@ init {
     for (i : 1 .. NB_STATION) {
         run station(i);
     }
-    ltl { always (station[0]:client_id > -1) -> (station[0]:client_id != station[1]:client_id)};
+    // La station delivre toujours la bonne commande au client correspondant
+    ltl q1_1 { true }; // TODO
+
+    // La station recupere toujour une commande
+    ltl q1_2 { []<> station@order_taken };
+    
+    // Les deux station ne traite jamais le meme client en meme temps
+    ltl q2_1 { always (station[0]:client_id > -1) -> (station[0]:client_id != station[1]:client_id)};
+
+    // A tout moment, un client pourra le faire dans le future.
+    ltl q2_2 { true }; // TODO
 
     atomic {
         for (i : 0 .. NB_CLIENT-1) {
