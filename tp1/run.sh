@@ -6,6 +6,6 @@ if [ ! -f "$SPIN" ]; then
 fi
 
 # -T : Do not indent printf's output
-$SPIN -T q1.pml 
+$SPIN -T model.pml 
 
 
