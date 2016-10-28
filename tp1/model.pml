@@ -13,7 +13,7 @@ chan lineup = [NB_CLIENT*3] of {client_id_t};
 
 // Il y a un channel par client, afin que le guichet puisse notifier chaque client individuellement.
 chan client_chan[NB_CLIENT*3] = [0] of {client_id_t};
-chan client_station[NB_CLIENT*3] = [0] of {station_id_t};
+chan client_station[NB_CLIENT*3] = [0] of {station_id_t, mtype};
 
 // Ce channel sert a passer la commande du client choisi par le guichet, vers le guichet.
 chan ticketCounterService = [1] of {mtype};
@@ -32,6 +32,7 @@ proctype client(client_id_t id; mtype engine_type)
         ::  printf("Client %d: J'entre dans la station-service\n", id);
             // Entrer dans la station service
             lineup!id;
+        client_in_linueup: 
 
             // Attendre que le guichet le selectionne
             client_chan[id]?_; // on se fou du contenu du message, ce n'est qu'un rendez-vous.
@@ -39,6 +40,7 @@ proctype client(client_id_t id; mtype engine_type)
             // Passer sa commande
             printf("Client %d: Je suis choisi, je commande %e\n", id, engine_type);
             ticketCounterService!engine_type;
+        client_order_placed:
             printf("Client %d: Commande passee. En attente d'une station libre.\n", id);
 
             // Attendre qu une station soit prete
@@ -125,5 +127,5 @@ init {
     ltl q2_1 { always (station[0]:client_id > -1) -> (station[0]:client_id != station[1]:client_id)};
 
     // A tout moment, un client pourra le faire dans le future.
-    ltl q2_2 { true }
+    ltl q2_2 { []<>client@client_in_linueup -> []<>client@client_order_placed }
 }
