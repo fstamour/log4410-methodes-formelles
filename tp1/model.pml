@@ -115,17 +115,22 @@ init {
         }
     }
 
+    // Peut-etre un bug dans spin: 
+    // Le modele ne compile pas si q1_1 ou les autres ne sont par en commentaire
+
     // La station delivre toujours la bonne commande au client correspondant
-    // Il y en a aucun qui compile TODO
-    //ltl q1_1 { [] !( client[0]:engine_type != client[0]:engine_type_received ) };
-    //ltl q1_1 { []<> client@correct_order };
+    // Ne pas oublier de mettre NB_STATION a 1
+    ltl q1_1 { []<> client@correct_order };
 
     // La station recupere toujour une commande
-    ltl q1_2 { []<> station@order_taken };
+    // Ne pas oublier de mettre NB_STATION a 1
+    // ltl q1_2 { []<> station@order_taken };
     
     // Les deux station ne traite jamais le meme client en meme temps
-    ltl q2_1 { always (station[0]:client_id > -1) -> (station[0]:client_id != station[1]:client_id)};
+    // Ne pas oublier de mettre NB_STATION a 2
+    //ltl q2_1 { always (station[0]:client_id > -1) -> (station[0]:client_id != station[1]:client_id)};
 
     // A tout moment, un client pourra le faire dans le future.
-    ltl q2_2 { []<>client@client_in_linueup -> []<>client@client_order_placed }
+    // Ne pas oublier de mettre NB_STATION a 2
+    //ltl q2_2 { []<>client@client_in_linueup -> []<>client@client_order_placed }
 }
