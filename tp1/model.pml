@@ -120,7 +120,7 @@ init {
 
     // La station delivre toujours la bonne commande au client correspondant
     // Ne pas oublier de mettre NB_STATION a 1
-    ltl q1_1 { []<> client@correct_order };
+    // ltl q1_1 { []<> client@correct_order };
 
     // La station recupere toujour une commande
     // Ne pas oublier de mettre NB_STATION a 1
@@ -128,7 +128,10 @@ init {
     
     // Les deux station ne traite jamais le meme client en meme temps
     // Ne pas oublier de mettre NB_STATION a 2
-    //ltl q2_1 { always (station[0]:client_id > -1) -> (station[0]:client_id != station[1]:client_id)};
+    ltl q2_1 
+        { [] 
+           ((station[0]:client_id > -1) && (station[1]:client_id > -1)) -> (station[0]:client_id != station[1]:client_id)
+        };
 
     // A tout moment, un client pourra le faire dans le future.
     // Ne pas oublier de mettre NB_STATION a 2
