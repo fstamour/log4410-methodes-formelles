@@ -22,6 +22,9 @@ chan pendingOrders = [NB_CLIENT] of {Order};
 
 proctype client(clientId_t id)
 {
+    chan selectMe = [0] of {byte};
+    chan deliverMe = [0] of {mtype};
+
     // Type de carburant (const)
     mtype engineType;
      if
@@ -33,14 +36,12 @@ proctype client(clientId_t id)
     // Attente
     AwaitingClient awaiting;
     awaiting.c = id;
-    chan selectMe = [0] of {byte};
     awaiting.selectMe = selectMe;
 
     // Commande et livraison
     Order pendingOrder;
     pendingOrder.c = id;
     pendingOrder.engineType = engineType;
-    chan deliverMe = [0] of {mtype};
     pendingOrder.deliverMe = deliverMe;
 
     printf("Client %d: Je demarre. Mon moteur est de type %e\n", id, engineType);
@@ -54,7 +55,7 @@ proctype client(clientId_t id)
             // Passer sa commande
             printf("Client %d: Je suis choisi, je commande %e\n", id, engineType);
             ticketCounterService!pendingOrder;
-            // Attendre qu'une station soit prete
+            // Attendre qu une station soit prete
             mtype orderFulfillment;
             pendingOrder.deliverMe?orderFulfillment;
             printf("Client %d: Je suis servi du %e par la station. Je quitte\n", id, orderFulfillment);
