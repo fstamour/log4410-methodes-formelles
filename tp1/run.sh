@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
-SPIN='./spin.exe'
-if [ ! -f "$SPIN" ]; then
+SPIN=./spin*.exe
+if [ ! -f $SPIN ]; then
     SPIN=spin
 fi
 
