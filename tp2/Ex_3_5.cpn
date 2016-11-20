@@ -7,8 +7,8 @@
              format="6"/>
   <cpnet>
     <globbox>
-      <ml id="ID1413825608">val N = 30;
-        <layout>val N = 30;</layout>
+      <ml id="ID1413825608">val N = 15;
+        <layout>val N = 15;</layout>
       </ml>
       <ml id="ID1413825495">val M = 10;
         <layout>val M = 10;</layout>
@@ -151,12 +151,12 @@
                  h="108.000000"/>
         <token x="-10.000000"
                y="0.000000"/>
-        <marking x="530.250000"
-                 y="-15.750000"
+        <marking x="70.250000"
+                 y="-46.750000"
                  hidden="false">
           <snap snap_id="0"
                 anchor.horizontal="1"
-                anchor.vertical="1"/>
+                anchor.vertical="3"/>
         </marking>
         <type id="ID1413877203">
           <posattr x="-31.312500"
@@ -483,11 +483,11 @@ action
         <text>depasser</text>
         <box w="116.000000"
              h="40.000000"/>
-        <binding x="7.200000"
-                 y="-3.000000"/>
+        <binding x="95.200000"
+                 y="-114.000000"/>
         <cond id="ID1414220043">
           <posattr x="-395.000000"
-                   y="-210.000000"/>
+                   y="-203.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -499,9 +499,8 @@ action
           <text tool="CPN Tools"
                 version="4.0.1">[v1&lt;&gt;[] andalso v2&lt;&gt;[] andalso List.null v3 
 andalso
-if lastSection(sec1+1) then (sec2=sec1+1;sec3=0)
-else if lastSection(sec1) then (sec2=0;sec3=1) 
-else (sec2=sec1+1;sec3=sec1+2)
+if lastSection(sec1+1) then (sec2=sec1+1 andalso sec3=0) else
+if lastSection(sec1) then (sec2=0 andalso sec3=1) else (sec2=sec1+1 andalso sec3=sec1+2) 
 ]</text>
         </cond>
         <time id="ID1414220044">
@@ -1271,14 +1270,14 @@ action
     </options>
     <binders>
       <cpnbinder id="ID2222"
-                 x="963"
-                 y="192"
+                 x="366"
+                 y="297"
                  width="1122"
                  height="554">
         <sheets>
           <cpnsheet id="ID2215"
-                    panx="-156.687500"
-                    pany="-52.312500"
+                    panx="-6.187500"
+                    pany="-23.312500"
                     zoom="1.000000"
                     instance="ID2149">
             <zorder>
