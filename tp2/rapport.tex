@@ -12,12 +12,13 @@
 \usepackage{xcolor}
 \usepackage{mathtools}
 \usepackage{amsmath, amsthm,amssymb}
+\usepackage{listings}
 \newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
 \SetCommentSty{mycommfont}
 
 \newcommand{\matr}[1]{\mathbf{#1}}
 \def\frenchtablename {Tableau}
-
+\mathtoolsset{showonlyrefs}
 \title{TP3 : Modélisation et analyse de systèmes à l'aide des réseaux de Petri}
 \author{
     JEAN-LANGLOIS Joël
@@ -103,7 +104,7 @@ suivants:
 \item M($p_5$) > 0 et M($p_6$) > 0: $t_5$ est tirable et $\mu$ décroît. 	
 \end{enumerate}
 On a montré que la fonction $\mu$ est une norme pour le marquage initial $M_0$, celui-ci est donc un marquage d'accueil. De 
-plus, le réseau est quasi-vivace car $\forall t \in T, \exists \in R(N, M_0): M \xrightarrow{t}$
+plus, le réseau est quasi-vivace car $\forall t \in T, \exists M \in R(N, M_0): M \xrightarrow{t}$
 \begin{align*}
 M_0 \xrightarrow{t_1} \\
 M_0 \xrightarrow{t_1} M' \xrightarrow{t_2} \\
@@ -160,20 +161,62 @@ Voir \textit{Ex\_2\_4.cpn}
 \subsubsection{Représentez par un réseau de Petri coloré l’avancement d’une voiture sur le circuit (il n’y a pas de 
 limitation aux nombres de voitures qui peuvent occuper la même section). Vous préciserez les ensembles de couleurs que vous 
 utilisez, le domaine de couleur des places et le marquage initial du réseau.}
+Voir \textit{Ex\_3\_1.cpn}
+\begin{flalign}
+&Clr(p_1) = \{SECTION, VOITURE\}\quad donc\quad\{1..N-1\} x \{1..M\}& \\
+&M_0 = \begin{pmatrix} 
+<0, 1> + <0, 2> + ... + <0, M> \\
+\end{pmatrix}&
+\end{flalign}
 \subsubsection{On considère à partir de maintenant qu’une fois le départ donné (toutes
 les voitures ont quitté la section 0), il ne doit jamais y avoir plus d’une
 voiture par section.Quelle contrainte cela introduit-il dans la règle d’avancement ? Modifiez votre modèle pour prendre en 
 compte 
 cette nouvelle contrainte.}
+Voir \textit{Ex\_3\_2.cpn} \\
+Cette nouvelle considération implique qu'il faudra que la transition ait accès à la voiture concernée par l'avancement, en 
+plus d'avoir accès au contenu de la section suivante afin d'ajouter une garde sur la transition. Nous avons donc modifié 
+notre paradigme pour que le RdPC reflète cette contrainte. Le domaine des couleurs pour la place $p_1$ est maintenant la 
+produit cartésien du domaine des couleurs des SECTION avec le domaine de couleurs VOITURES d'une liste de jetons la couleur 
+VOITURE.
+\begin{flalign}
+&Clr(p_1) = \{SECTION, VOITURES\}\quad avec\quad\{1..N-1\} x \{[VOITURES]_1, [VOITURES]_2,...,[VOITURES]_M\}& \\
+&M_0 = \begin{pmatrix} 
+<0, [<v_1, v_2, v_3...v_M>]> + <1, []> + ... + <N-1, []> \\
+\end{pmatrix}&
+\end{flalign} 
+De cette manière, il est possible de mettre une garde sur la transition de manière à ce qu'on puisse considérer les 
+caractéristiques de la section suivante (et de sa liste de voiture(s)) simultanément à la section retenue. Il a ensuite 
+suffit d'utiliser un bloc de code sur la transition pour sélectionner de façon non-déterministe la voiture retenue pour 
+avancement dans la liste des voitures de la section courante et de la transférer à la section suivante:
+\begin{lstlisting}
+// guard
+[ v1<>[] 
+  andalso 
+  List.null v2 
+  andalso 
+  if lastSection(sec1) then sec2=0 
+  else sec2=sec1+1 ] 
+  
+// code segment
+input (v1);
+output(car_idx);
+action
+discrete (0, (length v1)-1)
+\end{lstlisting}
 \subsubsection{Lorsqu’une voiture se trouve sur la section 0, elle peut choisir de rentrer aux stands. Proposez une 
 modélisation de cette action qui ne casse pas la structure circulaire du circuit (la section 0 se trouve toujours entre les 
 sections N $-$ 1 et 1)}
+Voir \textit{Ex\_3\_3.cpn}
 \subsubsection{La sortie des stands se fait dans la section 1 et n’est possible que si cette section est vide. Ajoutez cette 
 opération dans votre modèle.}
+Voir \textit{Ex\_3\_4.cpn} \\
 \subsubsection{Construisez la partie du modèle qui 
 représente un dépassement.}
+Voir \textit{Ex\_3\_5.cpn} \\
 \subsubsection{Dépliez la partie du réseau qui représente le dépassement de Hamilton par Raïkkönen lorsque Hamilton est dans 
 la section 3. Vous veillerez à donner des noms significatifs aux places du réseau.}
+Voir \textit{Ex\_3\_6.cpn} \\
 \section{Conclusion}
 Finalement, 
 
