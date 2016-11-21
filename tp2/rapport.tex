@@ -177,12 +177,14 @@ Voir \textit{Ex\_3\_2.cpn} \\
 Cette nouvelle considération implique qu'il faudra que la transition ait accès à la voiture concernée par l'avancement, en 
 plus d'avoir accès au contenu de la section suivante afin d'ajouter une garde sur la transition. Nous avons donc modifié 
 notre paradigme pour que le RdPC reflète cette contrainte. Le domaine des couleurs pour la place $p_1$ est maintenant la 
-produit cartésien du domaine des couleurs des SECTION avec le domaine de couleurs VOITURES d'une liste de jetons la couleur 
+produit cartésien du domaine des couleurs des SECTION avec le domaine de couleurs VOITURES d'une liste de jetons de la 
+couleur 
 VOITURE.
 \begin{flalign}
-&Clr(p_1) = \{SECTION, VOITURES\}\quad avec\quad\{1..N-1\} x \{[VOITURES]_1, [VOITURES]_2,...,[VOITURES]_M\}& \\
+&Clr(p_1) = \{SECTION, VOITURES\}\quad avec\quad\{1..N-1\} x \{[VOITURE^{0..M}]_1, 
+[VOITURES^{0..M}]_2,...,[VOITURES^{0..M}]_{N-1}\}& \\
 &M_0 = \begin{pmatrix} 
-<0, [<v_1, v_2, v_3...v_M>]> + <1, []> + ... + <N-1, []> \\
+<0, [<v_1> + <v_2> + <v_3>+...+<v_M>]> + <1, []> + ... + <N-1, []> \\
 \end{pmatrix}&
 \end{flalign} 
 De cette manière, il est possible de mettre une garde sur la transition de manière à ce qu'on puisse considérer les 
