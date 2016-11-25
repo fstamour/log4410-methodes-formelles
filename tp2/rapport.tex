@@ -178,10 +178,10 @@ Modèle d'un Grand Prix F1
   utilisez, le domaine de couleur des places et le marquage initial du réseau.}
 Voir \textit{Ex\_3\_1.cpn}
 \begin{flalign}
-  &Clr(p_1) = \{SECTION, VOITURE\}\quad donc\quad\{1..N-1\} x \{1..M\}& \\
+  &Clr(p_1) = \{SECTION, VOITURE\}\quad donc\quad\{1..N-1\} \times \{1..M\}& \\
   &M_0 = \begin{pmatrix}
     <0, 1> + <0, 2> + ... + <0, M> \\
-  \end{pmatrix}&
+  \end{pmatrix}
 \end{flalign}
 \subsubsection{On considère à partir de maintenant qu’une fois le départ donné (toutes
   les voitures ont quitté la section 0), il ne doit jamais y avoir plus d’une
@@ -189,6 +189,7 @@ Voir \textit{Ex\_3\_1.cpn}
   compte
   cette nouvelle contrainte.}
 Voir \textit{Ex\_3\_2.cpn} \\
+
 Cette nouvelle considération implique qu'il faudra que la transition ait accès à la voiture concernée par l'avancement, en
 plus d'avoir accès au contenu de la section suivante afin d'ajouter une garde sur la transition. Nous avons donc modifié
 notre paradigme pour que le RdPC reflète cette contrainte. Le domaine des couleurs pour la place $p_1$ est maintenant la
@@ -196,8 +197,8 @@ produit cartésien du domaine des couleurs des SECTION avec le domaine de couleu
 couleur
 VOITURE.
 \begin{flalign}
-  &Clr(p_1) = \{SECTION, VOITURES\}
-  \quad avec\quad\{1..N-1\} x \{[VOITURE^{0..M}]_1,
+  &Clr(p_1) = \{SECTION, VOITURES\}\cr
+  &\quad avec\quad\{1..N-1\} \times \{[VOITURE^{0..M}]_1,
         [VOITURES^{0..M}]_2,...,[VOITURES^{0..M}]_{N-1}\}& \\
         &M_0 = \begin{pmatrix}
           <0, [<v_1> + <v_2> + <v_3>+...+<v_M>]> + <1, []> + ... + <N-1, []> \\
