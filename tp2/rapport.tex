@@ -51,13 +51,27 @@ Voir \textit{Ex\_1\_2.cpn} \\
 L'ajout de couleur au réseau de pétri de la question suivante permet de diminuer de moitié les transitions ainsi que les places du style \textit{O\textsubscript{ix}}. Les connections sont plus clairs puisqu'il y en a moins et l'ajout de type permet de s'assurer que les connections suivent bien la sémantique voulue.
 \subsubsection{Modélisez le même système par un réseau de Petri coloré à deux places O et E, et une seule transition
   \textit{Engagez-vous dans le secteur suivant}. Simulez votre modèle.}
-Voir \textit{Ex\_1\_3.cpn}
+Voir \textit{Ex\_1\_3.cpn} \\
+
+
+
 \subsubsection{Indiquer les propriétés attendues de votre modèle et vérifier en utilisant l’outil.}
 Les propriétés attendues sont les suivantes:
 \begin{enumerate}
-\item Prop1
-\item Prop2
-\end{enumerate}
+\item Si la place \textit{O} contient un jeton de couleur <train, secteur(i)> alors la place \textit{E} ne contient pas de jeton de couleur <secteur(i)>.
+\item Il n'y a jamais deux train au même secteur.
+\item Si la place \textit{O} contient un train au secteur \textit{i}, alors il n'en contient pas au secteur \textit{i+i}.
+\item Il toujours exactement deux train dans la place \textit{O}.
+\item Il toujours exactement cinq jetons dans la place \textit{E}.
+\end{enumerate} 
+
+\par{Selon le rapport généré par CPN, les propriétés 4 et 5 sont vérifiées.}
+
+\lstinputlisting[label=Extrait du rapport de CPN,
+  caption=Extrait du rapport de CPN,
+  firstline=24,lastline=27]{Report.txt}
+
+\par{Nous avons aussi généré le graphe des marquages à l'aide de CPN (voir \textit{Ex\_1\_3+ss.cpn}). Nous en avons extrait la liste des marquages accessibles (voir \textit{listing} \ref{marquages} en annexe). De cette liste, on voit que toute les propriétés sont vérifiés.}
 
 
 
@@ -238,5 +252,9 @@ Voir \textit{Ex\_3\_5.cpn} \\
 Voir \textit{Ex\_3\_6.cpn} \\
 \section{Conclusion}
 Finalement,
+
+\newpage
+\subsubsection{Annexe}
+\lstinputlisting[label=marquages,caption=Liste des marquages accessibles du Réseau de Pétre de l'exercice 1.3,breaklines=true]{Ex_1_3_state_space.txt}
 
 \end{document}
