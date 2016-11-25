@@ -1,0 +1,2536 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE workspaceElements PUBLIC "-//CPN//DTD CPNXML 1.0//EN" "http://cpntools.org/DTD/6/cpn.dtd">
+
+<workspaceElements>
+  <generator tool="CPN Tools"
+             version="4.0.1"
+             format="6"/>
+  <cpnet>
+    <globbox>
+      <color id="ID1413161607">
+        <id>TRAIN</id>
+        <enum>
+          <id>A</id>
+          <id>B</id>
+        </enum>
+        <layout>colset TRAIN= with A | B;</layout>
+      </color>
+      <ml id="ID1413162412">val n_secteur = 7;
+        <layout>val n_secteur = 7;</layout>
+      </ml>
+      <color id="ID1413161820">
+        <id>SECTEUR</id>
+        <index>
+          <ml>1</ml>
+          <ml>n_secteur</ml>
+          <id>secteur</id>
+        </index>
+        <layout>colset SECTEUR = index secteur with 1..n_secteur;</layout>
+      </color>
+      <ml id="ID1413294133">fun inc_secteur(secteur(i), n:int) = 
+secteur(if i + n &gt; n_secteur then 
+  (i + n) mod n_secteur
+else
+  i + n)
+        <layout>fun inc_secteur(secteur(i), n:int) = 
+secteur(if i + n &gt; n_secteur then 
+  (i + n) mod n_secteur
+else
+  i + n)</layout>
+      </ml>
+      <color id="ID1413165977">
+        <id>O</id>
+        <product>
+          <id>TRAIN</id>
+          <id>SECTEUR</id>
+        </product>
+        <layout>colset O = product TRAIN * SECTEUR;</layout>
+      </color>
+      <var id="ID1413165464">
+        <type>
+          <id>O</id>
+        </type>
+        <id>occ_in</id>
+        <id>occ_out</id>
+        <layout>var occ_in, occ_out: O;</layout>
+      </var>
+      <var id="ID1413175052">
+        <type>
+          <id>SECTEUR</id>
+        </type>
+        <id>e1</id>
+        <id>e2</id>
+        <id>e3</id>
+        <id>e4</id>
+        <layout>var e1, e2, e3, e4: SECTEUR;</layout>
+      </var>
+      <var id="ID1413205906">
+        <type>
+          <id>SECTEUR</id>
+        </type>
+        <id>e_in</id>
+        <layout>var e_in: SECTEUR;</layout>
+      </var>
+      <block id="ID1">
+        <id>Standard declarations</id>
+        <block id="ID1412310166">
+          <id>Standard priorities</id>
+          <ml id="ID1412310255">val P_HIGH = 100;
+            <layout>val P_HIGH = 100;</layout>
+          </ml>
+          <ml id="ID1412310292">val P_NORMAL = 1000;
+            <layout>val P_NORMAL = 1000;</layout>
+          </ml>
+          <ml id="ID1412310322">val P_LOW = 10000;
+            <layout>val P_LOW = 10000;</layout>
+          </ml>
+        </block>
+        <color id="ID85042">
+          <id>UNIT</id>
+          <unit/>
+          <layout>colset UNIT = unit;</layout>
+        </color>
+        <color id="ID4">
+          <id>BOOL</id>
+          <bool/>
+        </color>
+        <color id="ID3">
+          <id>INT</id>
+          <int/>
+        </color>
+        <color id="ID1412312409">
+          <id>INTINF</id>
+          <intinf/>
+          <layout>colset INTINF = intinf;</layout>
+        </color>
+        <color id="ID1412312425">
+          <id>TIME</id>
+          <time/>
+          <layout>colset TIME = time;</layout>
+        </color>
+        <color id="ID1412322990">
+          <id>REAL</id>
+          <real/>
+          <layout>colset REAL = real;</layout>
+        </color>
+        <color id="ID5">
+          <id>STRING</id>
+          <string/>
+        </color>
+      </block>
+    </globbox>
+    <page id="ID6">
+      <pageattr name="Ex_1_3"/>
+      <place id="ID1413161069">
+        <posattr x="-145.000000"
+                 y="-182.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <text>E</text>
+        <ellipse w="60.000000"
+                 h="40.000000"/>
+        <token x="-10.000000"
+               y="0.000000"/>
+        <marking x="47.000000"
+                 y="12.000000"
+                 hidden="false">
+          <snap snap_id="0"
+                anchor.horizontal="1"
+                anchor.vertical="1"/>
+        </marking>
+        <type id="ID1413161070">
+          <posattr x="-91.500000"
+                   y="-205.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.1">SECTEUR</text>
+        </type>
+        <initmark id="ID1413161071">
+          <posattr x="79.500000"
+                   y="-150.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.1">SECTEUR.all() -- (1`secteur(2) ++ 1`secteur(6))</text>
+        </initmark>
+      </place>
+      <place id="ID1413161129">
+        <posattr x="42.000000"
+                 y="168.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <text>O</text>
+        <ellipse w="60.000000"
+                 h="44.000000"/>
+        <token x="-10.000000"
+               y="0.000000"/>
+        <marking x="0.000000"
+                 y="0.000000"
+                 hidden="false">
+          <snap snap_id="0"
+                anchor.horizontal="0"
+                anchor.vertical="0"/>
+        </marking>
+        <type id="ID1413161130">
+          <posattr x="71.000000"
+                   y="142.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.1">O</text>
+        </type>
+        <initmark id="ID1413161131">
+          <posattr x="184.000000"
+                   y="193.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.1">1`(A,secteur(2)) ++ 1`(B, secteur(6))</text>
+        </initmark>
+      </place>
+      <trans id="ID1413161000"
+             explicit="false">
+        <posattr x="-145.000000"
+                 y="42.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <text>Engager</text>
+        <box w="84.000000"
+             h="48.000000"/>
+        <binding x="0.200000"
+                 y="12.000000"/>
+        <cond id="ID1413221801">
+          <posattr x="-297.000000"
+                   y="112.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.1">let
+  val (_, s) = occ_in
+in 
+   e1 = inc_secteur(s, 1) 
+     andalso e2 = inc_secteur(s, 2)
+end</text>
+        </cond>
+        <time id="ID1413161002">
+          <posattr x="-88.500000"
+                   y="77.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.1"/>
+        </time>
+        <code id="ID1413161003">
+          <posattr x="167.500000"
+                   y="-28.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.1">input (e1, e2, occ_in);
+output (e3, e4, occ_out);
+action
+let
+  val (train, secteur(i)) = occ_in
+in
+  (secteur(i),  (* becomes empty *)
+   e2, (* stays empty *)
+  (train, e1)) (* Same train, next secteur *)
+end</text>
+        </code>
+        <priority id="ID1413326001">
+          <posattr x="-225.000000"
+                   y="7.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.1"/>
+        </priority>
+      </trans>
+      <arc id="ID1413166389"
+           orientation="TtoP"
+           order="2">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.200000"
+                   currentcyckle="2"/>
+        <transend idref="ID1413161000"/>
+        <placeend idref="ID1413161129"/>
+        <annot id="ID1413167767">
+          <posattr x="-62.500000"
+                   y="135.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.1">occ_out</text>
+        </annot>
+      </arc>
+      <arc id="ID1413176689"
+           orientation="PtoT"
+           order="1">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.200000"
+                   currentcyckle="2"/>
+        <transend idref="ID1413161000"/>
+        <placeend idref="ID1413161129"/>
+        <annot id="ID1413176690">
+          <posattr x="-2.500000"
+                   y="83.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.1">occ_in</text>
+        </annot>
+      </arc>
+      <arc id="ID1413180290"
+           orientation="TtoP"
+           order="1">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.200000"
+                   currentcyckle="2"/>
+        <transend idref="ID1413161000"/>
+        <placeend idref="ID1413161069"/>
+        <bendpoint id="ID1413271173"
+                   serial="1">
+          <posattr x="-84.000000"
+                   y="28.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </bendpoint>
+        <bendpoint id="ID1413245292"
+                   serial="2">
+          <posattr x="-84.000000"
+                   y="-182.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </bendpoint>
+        <annot id="ID1413180291">
+          <posattr x="-72.000000"
+                   y="-41.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.1">e4</text>
+        </annot>
+      </arc>
+      <arc id="ID1413207039"
+           orientation="PtoT"
+           order="1">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.200000"
+                   currentcyckle="2"/>
+        <transend idref="ID1413161000"/>
+        <placeend idref="ID1413161069"/>
+        <bendpoint id="ID1413263428"
+                   serial="1">
+          <posattr x="-210.000000"
+                   y="28.800000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </bendpoint>
+        <bendpoint id="ID1413266203"
+                   serial="2">
+          <posattr x="-210.000000"
+                   y="-182.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </bendpoint>
+        <annot id="ID1413207040">
+          <posattr x="-222.000000"
+                   y="-43.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.1">e1</text>
+        </annot>
+      </arc>
+      <arc id="ID1413242275"
+           orientation="PtoT"
+           order="1">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.200000"
+                   currentcyckle="2"/>
+        <transend idref="ID1413161000"/>
+        <placeend idref="ID1413161069"/>
+        <bendpoint id="ID1413269738"
+                   serial="1">
+          <posattr x="-194.200000"
+                   y="0.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </bendpoint>
+        <bendpoint id="ID1413267608"
+                   serial="2">
+          <posattr x="-194.200000"
+                   y="-156.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </bendpoint>
+        <annot id="ID1413242276">
+          <posattr x="-182.000000"
+                   y="-41.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.1">e2</text>
+        </annot>
+      </arc>
+      <arc id="ID1413260693"
+           orientation="TtoP"
+           order="1">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.200000"
+                   currentcyckle="2"/>
+        <transend idref="ID1413161000"/>
+        <placeend idref="ID1413161069"/>
+        <bendpoint id="ID1413273348"
+                   serial="1">
+          <posattr x="-96.600000"
+                   y="0.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </bendpoint>
+        <bendpoint id="ID1413274080"
+                   serial="2">
+          <posattr x="-96.600000"
+                   y="-152.800000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </bendpoint>
+        <annot id="ID1413260694">
+          <posattr x="-109.000000"
+                   y="-42.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+          <text tool="CPN Tools"
+                version="4.0.1">e3</text>
+        </annot>
+      </arc>
+      <constraints/>
+      <Aux id="ID1413338333">
+        <posattr x="280.000000"
+                 y="-233.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <label/>
+        <text>Text</text>
+      </Aux>
+      <ssarc id="ID1413340266"
+             order="1"
+             number="2">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413339297"/>
+        <destination idref="ID1413340258"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>2:1-&gt;3 Ex_1_3&apos;Engager 1: {occ_in=(B,secteur(6)),e1=secteur(7),e2=secteur(1),e3=secteur(6),e4=secteur(1),occ_out=(B,secteur(7))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413340271"
+             order="1"
+             number="1">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413339297"/>
+        <destination idref="ID1413340262"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>1:1-&gt;2 Ex_1_3&apos;Engager 1: {occ_in=(A,secteur(2)),e1=secteur(3),e2=secteur(4),e3=secteur(2),e4=secteur(4),occ_out=(A,secteur(3))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413348039"
+             order="1"
+             number="4">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413340262"/>
+        <destination idref="ID1413348031"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>4:2-&gt;5 Ex_1_3&apos;Engager 1: {occ_in=(A,secteur(3)),e1=secteur(4),e2=secteur(5),e3=secteur(3),e4=secteur(5),occ_out=(A,secteur(4))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413348044"
+             order="1"
+             number="3">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413340262"/>
+        <destination idref="ID1413348035"/>
+        <bendpoint id="ID1413448426"
+                   serial="1">
+          <posattr x="728.000000"
+                   y="210.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </bendpoint>
+        <bendpoint id="ID1413452167"
+                   serial="2">
+          <posattr x="728.000000"
+                   y="24.500000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </bendpoint>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>3:2-&gt;4 Ex_1_3&apos;Engager 1: {occ_in=(B,secteur(6)),e1=secteur(7),e2=secteur(1),e3=secteur(6),e4=secteur(1),occ_out=(B,secteur(7))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413349036"
+             order="1"
+             number="8">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413348031"/>
+        <destination idref="ID1413349032"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>8:5-&gt;7 Ex_1_3&apos;Engager 1: {occ_in=(B,secteur(6)),e1=secteur(7),e2=secteur(1),e3=secteur(6),e4=secteur(1),occ_out=(B,secteur(7))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413351018"
+             order="1"
+             number="7">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413348035"/>
+        <destination idref="ID1413349032"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>7:4-&gt;7 Ex_1_3&apos;Engager 1: {occ_in=(A,secteur(3)),e1=secteur(4),e2=secteur(5),e3=secteur(3),e4=secteur(5),occ_out=(A,secteur(4))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413351023"
+             order="1"
+             number="6">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413348035"/>
+        <destination idref="ID1413351014"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>6:4-&gt;6 Ex_1_3&apos;Engager 1: {occ_in=(B,secteur(7)),e1=secteur(1),e2=secteur(2),e3=secteur(7),e4=secteur(2),occ_out=(B,secteur(1))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413353015"
+             order="1"
+             number="9">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413351014"/>
+        <destination idref="ID1413353011"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>9:6-&gt;8 Ex_1_3&apos;Engager 1: {occ_in=(A,secteur(3)),e1=secteur(4),e2=secteur(5),e3=secteur(3),e4=secteur(5),occ_out=(A,secteur(4))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413354028"
+             order="1"
+             number="13">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413353011"/>
+        <destination idref="ID1413354020"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>13:8-&gt;11 Ex_1_3&apos;Engager 1: {occ_in=(B,secteur(1)),e1=secteur(2),e2=secteur(3),e3=secteur(1),e4=secteur(3),occ_out=(B,secteur(2))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413354033"
+             order="1"
+             number="12">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413353011"/>
+        <destination idref="ID1413354024"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>12:8-&gt;10 Ex_1_3&apos;Engager 1: {occ_in=(A,secteur(4)),e1=secteur(5),e2=secteur(6),e3=secteur(4),e4=secteur(6),occ_out=(A,secteur(5))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413356043"
+             order="1"
+             number="17">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413354020"/>
+        <destination idref="ID1413356039"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>17:11-&gt;12 Ex_1_3&apos;Engager 1: {occ_in=(A,secteur(4)),e1=secteur(5),e2=secteur(6),e3=secteur(4),e4=secteur(6),occ_out=(A,secteur(5))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413357061"
+             order="1"
+             number="16">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413354024"/>
+        <destination idref="ID1413357057"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>16:10-&gt;13 Ex_1_3&apos;Engager 1: {occ_in=(A,secteur(5)),e1=secteur(6),e2=secteur(7),e3=secteur(5),e4=secteur(7),occ_out=(A,secteur(6))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413357066"
+             order="1"
+             number="15">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413354024"/>
+        <destination idref="ID1413356039"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>15:10-&gt;12 Ex_1_3&apos;Engager 1: {occ_in=(B,secteur(1)),e1=secteur(2),e2=secteur(3),e3=secteur(1),e4=secteur(3),occ_out=(B,secteur(2))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413358085"
+             order="1"
+             number="20">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413357057"/>
+        <destination idref="ID1413358081"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>20:13-&gt;14 Ex_1_3&apos;Engager 1: {occ_in=(B,secteur(1)),e1=secteur(2),e2=secteur(3),e3=secteur(1),e4=secteur(3),occ_out=(B,secteur(2))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413359113"
+             order="1"
+             number="22">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413358081"/>
+        <destination idref="ID1413359105"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>22:14-&gt;17 Ex_1_3&apos;Engager 1: {occ_in=(B,secteur(2)),e1=secteur(3),e2=secteur(4),e3=secteur(2),e4=secteur(4),occ_out=(B,secteur(3))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413359118"
+             order="1"
+             number="21">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413358081"/>
+        <destination idref="ID1413359109"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>21:14-&gt;16 Ex_1_3&apos;Engager 1: {occ_in=(A,secteur(6)),e1=secteur(7),e2=secteur(1),e3=secteur(6),e4=secteur(1),occ_out=(A,secteur(7))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413362176"
+             order="1"
+             number="24">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413359109"/>
+        <destination idref="ID1413362172"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>24:16-&gt;18 Ex_1_3&apos;Engager 1: {occ_in=(B,secteur(2)),e1=secteur(3),e2=secteur(4),e3=secteur(2),e4=secteur(4),occ_out=(B,secteur(3))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413364240"
+             order="1"
+             number="28">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413362172"/>
+        <destination idref="ID1413364232"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>28:18-&gt;21 Ex_1_3&apos;Engager 1: {occ_in=(B,secteur(3)),e1=secteur(4),e2=secteur(5),e3=secteur(3),e4=secteur(5),occ_out=(B,secteur(4))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413364245"
+             order="1"
+             number="27">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413362172"/>
+        <destination idref="ID1413364236"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>27:18-&gt;20 Ex_1_3&apos;Engager 1: {occ_in=(A,secteur(7)),e1=secteur(1),e2=secteur(2),e3=secteur(7),e4=secteur(2),occ_out=(A,secteur(1))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413366321"
+             order="1"
+             number="32">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413364232"/>
+        <destination idref="ID1413366313"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>32:21-&gt;22 Ex_1_3&apos;Engager 1: {occ_in=(A,secteur(7)),e1=secteur(1),e2=secteur(2),e3=secteur(7),e4=secteur(2),occ_out=(A,secteur(1))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413366326"
+             order="1"
+             number="31">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413364232"/>
+        <destination idref="ID1413366317"/>
+        <bendpoint id="ID1413479091"
+                   serial="1">
+          <posattr x="1290.000000"
+                   y="146.000000"/>
+          <fillattr colour="White"
+                    pattern="Solid"
+                    filled="false"/>
+          <lineattr colour="Black"
+                    thick="0"
+                    type="Solid"/>
+          <textattr colour="Black"
+                    bold="false"/>
+        </bendpoint>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>31:21-&gt;23 Ex_1_3&apos;Engager 1: {occ_in=(B,secteur(4)),e1=secteur(5),e2=secteur(6),e3=secteur(4),e4=secteur(6),occ_out=(B,secteur(5))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413367368"
+             order="1"
+             number="30">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413364236"/>
+        <destination idref="ID1413366313"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>30:20-&gt;22 Ex_1_3&apos;Engager 1: {occ_in=(B,secteur(3)),e1=secteur(4),e2=secteur(5),e3=secteur(3),e4=secteur(5),occ_out=(B,secteur(4))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413371555"
+             order="1"
+             number="35">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413366317"/>
+        <destination idref="ID1413371551"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>35:23-&gt;25 Ex_1_3&apos;Engager 1: {occ_in=(A,secteur(7)),e1=secteur(1),e2=secteur(2),e3=secteur(7),e4=secteur(2),occ_out=(A,secteur(1))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413372622"
+             order="1"
+             number="38">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413371551"/>
+        <destination idref="ID1413372614"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>38:25-&gt;26 Ex_1_3&apos;Engager 1: {occ_in=(A,secteur(1)),e1=secteur(2),e2=secteur(3),e3=secteur(1),e4=secteur(3),occ_out=(A,secteur(2))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413372627"
+             order="1"
+             number="37">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413371551"/>
+        <destination idref="ID1413372618"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>37:25-&gt;27 Ex_1_3&apos;Engager 1: {occ_in=(B,secteur(5)),e1=secteur(6),e2=secteur(7),e3=secteur(5),e4=secteur(7),occ_out=(B,secteur(6))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413373693"
+             order="1"
+             number="40">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413372614"/>
+        <destination idref="ID1413373689"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>40:26-&gt;28 Ex_1_3&apos;Engager 1: {occ_in=(A,secteur(2)),e1=secteur(3),e2=secteur(4),e3=secteur(2),e4=secteur(4),occ_out=(A,secteur(3))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413373698"
+             order="1"
+             number="39">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413372614"/>
+        <destination idref="ID1413339297"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>39:26-&gt;1 Ex_1_3&apos;Engager 1: {occ_in=(B,secteur(5)),e1=secteur(6),e2=secteur(7),e3=secteur(5),e4=secteur(7),occ_out=(B,secteur(6))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413374761"
+             order="1"
+             number="41">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413372618"/>
+        <destination idref="ID1413339297"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>41:27-&gt;1 Ex_1_3&apos;Engager 1: {occ_in=(A,secteur(1)),e1=secteur(2),e2=secteur(3),e3=secteur(1),e4=secteur(3),occ_out=(A,secteur(2))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413375827"
+             order="1"
+             number="42">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413373689"/>
+        <destination idref="ID1413340262"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>42:28-&gt;2 Ex_1_3&apos;Engager 1: {occ_in=(B,secteur(5)),e1=secteur(6),e2=secteur(7),e3=secteur(5),e4=secteur(7),occ_out=(B,secteur(6))}</text>
+        </descriptor>
+      </ssarc>
+      <ssarc id="ID1413381174"
+             order="1"
+             number="5">
+        <posattr x="0.000000"
+                 y="0.000000"/>
+        <fillattr colour="White"
+                  pattern="Solid"
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="0"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <arrowattr headsize="1.000000"
+                   currentcyckle="2"/>
+        <source idref="ID1413340258"/>
+        <destination idref="ID1413348035"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>5:3-&gt;4 Ex_1_3&apos;Engager 1: {occ_in=(A,secteur(2)),e1=secteur(3),e2=secteur(4),e3=secteur(2),e4=secteur(4),occ_out=(A,secteur(3))}</text>
+        </descriptor>
+      </ssarc>
+      <ssnode id="ID1413339297"
+              number="1"
+              predecessors="2"
+              successors="2">
+        <posattr x="714.000000"
+                 y="252.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="-211.000000"
+                    y="-127.000000"
+                    visible="true"
+                    dead="false">
+          <text>1:
+Ex_1_3&apos;E 1: 1`secteur(1)++
+1`secteur(3)++
+1`secteur(4)++
+1`secteur(5)++
+1`secteur(7)
+Ex_1_3&apos;O 1: 1`(A,secteur(2))++
+1`(B,secteur(6))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413340258"
+              number="3"
+              predecessors="1"
+              successors="1">
+        <posattr x="714.000000"
+                 y="-42.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>3:
+Ex_1_3&apos;E 1: 1`secteur(1)++
+1`secteur(3)++
+1`secteur(4)++
+1`secteur(5)++
+1`secteur(6)
+Ex_1_3&apos;O 1: 1`(A,secteur(2))++
+1`(B,secteur(7))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413340262"
+              number="2"
+              predecessors="2"
+              successors="2">
+        <posattr x="798.000000"
+                 y="210.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>2:
+Ex_1_3&apos;E 1: 1`secteur(1)++
+1`secteur(2)++
+1`secteur(4)++
+1`secteur(5)++
+1`secteur(7)
+Ex_1_3&apos;O 1: 1`(A,secteur(3))++
+1`(B,secteur(6))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413348031"
+              number="5"
+              predecessors="1"
+              successors="1">
+        <posattr x="798.000000"
+                 y="126.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>5:
+Ex_1_3&apos;E 1: 1`secteur(1)++
+1`secteur(2)++
+1`secteur(3)++
+1`secteur(5)++
+1`secteur(7)
+Ex_1_3&apos;O 1: 1`(A,secteur(4))++
+1`(B,secteur(6))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413348035"
+              number="4"
+              predecessors="2"
+              successors="2">
+        <posattr x="798.000000"
+                 y="-42.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>4:
+Ex_1_3&apos;E 1: 1`secteur(1)++
+1`secteur(2)++
+1`secteur(4)++
+1`secteur(5)++
+1`secteur(6)
+Ex_1_3&apos;O 1: 1`(A,secteur(3))++
+1`(B,secteur(7))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413349032"
+              number="7"
+              predecessors="2"
+              successors="2">
+        <posattr x="798.000000"
+                 y="42.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>7:
+Ex_1_3&apos;E 1: 1`secteur(1)++
+1`secteur(2)++
+1`secteur(3)++
+1`secteur(5)++
+1`secteur(6)
+Ex_1_3&apos;O 1: 1`(A,secteur(4))++
+1`(B,secteur(7))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413351014"
+              number="6"
+              predecessors="1"
+              successors="1">
+        <posattr x="882.000000"
+                 y="84.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>6:
+Ex_1_3&apos;E 1: 1`secteur(2)++
+1`secteur(4)++
+1`secteur(5)++
+1`secteur(6)++
+1`secteur(7)
+Ex_1_3&apos;O 1: 1`(A,secteur(3))++
+1`(B,secteur(1))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413353011"
+              number="8"
+              predecessors="2"
+              successors="2">
+        <posattr x="953.000000"
+                 y="84.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>8:
+Ex_1_3&apos;E 1: 1`secteur(2)++
+1`secteur(3)++
+1`secteur(5)++
+1`secteur(6)++
+1`secteur(7)
+Ex_1_3&apos;O 1: 1`(A,secteur(4))++
+1`(B,secteur(1))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413354020"
+              number="11"
+              predecessors="1"
+              successors="1">
+        <posattr x="1031.000000"
+                 y="84.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>11:
+Ex_1_3&apos;E 1: 1`secteur(1)++
+1`secteur(3)++
+1`secteur(5)++
+1`secteur(6)++
+1`secteur(7)
+Ex_1_3&apos;O 1: 1`(A,secteur(4))++
+1`(B,secteur(2))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413354024"
+              number="10"
+              predecessors="2"
+              successors="2">
+        <posattr x="1027.000000"
+                 y="32.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>10:
+Ex_1_3&apos;E 1: 1`secteur(2)++
+1`secteur(3)++
+1`secteur(4)++
+1`secteur(6)++
+1`secteur(7)
+Ex_1_3&apos;O 1: 1`(A,secteur(5))++
+1`(B,secteur(1))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413356039"
+              number="12"
+              predecessors="2"
+              successors="2">
+        <posattr x="1092.000000"
+                 y="84.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>12:
+Ex_1_3&apos;E 1: 1`secteur(1)++
+1`secteur(3)++
+1`secteur(4)++
+1`secteur(6)++
+1`secteur(7)
+Ex_1_3&apos;O 1: 1`(A,secteur(5))++
+1`(B,secteur(2))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413357057"
+              number="13"
+              predecessors="1"
+              successors="1">
+        <posattr x="1092.000000"
+                 y="31.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>13:
+Ex_1_3&apos;E 1: 1`secteur(2)++
+1`secteur(3)++
+1`secteur(4)++
+1`secteur(5)++
+1`secteur(7)
+Ex_1_3&apos;O 1: 1`(A,secteur(6))++
+1`(B,secteur(1))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413358081"
+              number="14"
+              predecessors="2"
+              successors="2">
+        <posattr x="1157.000000"
+                 y="30.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>14:
+Ex_1_3&apos;E 1: 1`secteur(1)++
+1`secteur(3)++
+1`secteur(4)++
+1`secteur(5)++
+1`secteur(7)
+Ex_1_3&apos;O 1: 1`(A,secteur(6))++
+1`(B,secteur(2))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413359105"
+              number="17"
+              predecessors="2"
+              successors="2">
+        <posattr x="1218.000000"
+                 y="30.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>17:
+Ex_1_3&apos;E 1: 1`secteur(1)++
+1`secteur(2)++
+1`secteur(4)++
+1`secteur(5)++
+1`secteur(7)
+Ex_1_3&apos;O 1: 1`(A,secteur(6))++
+1`(B,secteur(3))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413359109"
+              number="16"
+              predecessors="1"
+              successors="1">
+        <posattr x="1157.000000"
+                 y="-42.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>16:
+Ex_1_3&apos;E 1: 1`secteur(1)++
+1`secteur(3)++
+1`secteur(4)++
+1`secteur(5)++
+1`secteur(6)
+Ex_1_3&apos;O 1: 1`(A,secteur(7))++
+1`(B,secteur(2))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413362172"
+              number="18"
+              predecessors="2"
+              successors="2">
+        <posattr x="1218.000000"
+                 y="-42.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>18:
+Ex_1_3&apos;E 1: 1`secteur(1)++
+1`secteur(2)++
+1`secteur(4)++
+1`secteur(5)++
+1`secteur(6)
+Ex_1_3&apos;O 1: 1`(A,secteur(7))++
+1`(B,secteur(3))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413364232"
+              number="21"
+              predecessors="2"
+              successors="2">
+        <posattr x="1290.000000"
+                 y="-42.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>21:
+Ex_1_3&apos;E 1: 1`secteur(1)++
+1`secteur(2)++
+1`secteur(3)++
+1`secteur(5)++
+1`secteur(6)
+Ex_1_3&apos;O 1: 1`(A,secteur(7))++
+1`(B,secteur(4))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413364236"
+              number="20"
+              predecessors="1"
+              successors="1">
+        <posattr x="1218.000000"
+                 y="-110.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>20:
+Ex_1_3&apos;E 1: 1`secteur(2)++
+1`secteur(4)++
+1`secteur(5)++
+1`secteur(6)++
+1`secteur(7)
+Ex_1_3&apos;O 1: 1`(A,secteur(1))++
+1`(B,secteur(3))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413366313"
+              number="22"
+              predecessors="2"
+              successors="2">
+        <posattr x="1291.000000"
+                 y="-111.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>22:
+Ex_1_3&apos;E 1: 1`secteur(2)++
+1`secteur(3)++
+1`secteur(5)++
+1`secteur(6)++
+1`secteur(7)
+Ex_1_3&apos;O 1: 1`(A,secteur(1))++
+1`(B,secteur(4))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413366317"
+              number="23"
+              predecessors="1"
+              successors="1">
+        <posattr x="1092.000000"
+                 y="139.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>23:
+Ex_1_3&apos;E 1: 1`secteur(1)++
+1`secteur(2)++
+1`secteur(3)++
+1`secteur(4)++
+1`secteur(6)
+Ex_1_3&apos;O 1: 1`(A,secteur(7))++
+1`(B,secteur(5))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413371551"
+              number="25"
+              predecessors="2"
+              successors="2">
+        <posattr x="1092.000000"
+                 y="252.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>25:
+Ex_1_3&apos;E 1: 1`secteur(2)++
+1`secteur(3)++
+1`secteur(4)++
+1`secteur(6)++
+1`secteur(7)
+Ex_1_3&apos;O 1: 1`(A,secteur(1))++
+1`(B,secteur(5))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413372614"
+              number="26"
+              predecessors="2"
+              successors="2">
+        <posattr x="882.000000"
+                 y="252.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>26:
+Ex_1_3&apos;E 1: 1`secteur(1)++
+1`secteur(3)++
+1`secteur(4)++
+1`secteur(6)++
+1`secteur(7)
+Ex_1_3&apos;O 1: 1`(A,secteur(2))++
+1`(B,secteur(5))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413372618"
+              number="27"
+              predecessors="1"
+              successors="1">
+        <posattr x="892.000000"
+                 y="324.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="7.000000"
+                    y="-145.000000"
+                    visible="true"
+                    dead="false">
+          <text>27:
+Ex_1_3&apos;E 1: 1`secteur(2)++
+1`secteur(3)++
+1`secteur(4)++
+1`secteur(5)++
+1`secteur(7)
+Ex_1_3&apos;O 1: 1`(A,secteur(1))++
+1`(B,secteur(6))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+      <ssnode id="ID1413373689"
+              number="28"
+              predecessors="1"
+              successors="1">
+        <posattr x="882.000000"
+                 y="183.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <descriptor x="0.000000"
+                    y="0.000000"
+                    visible="false"
+                    dead="false">
+          <text>28:
+Ex_1_3&apos;E 1: 1`secteur(1)++
+1`secteur(2)++
+1`secteur(4)++
+1`secteur(6)++
+1`secteur(7)
+Ex_1_3&apos;O 1: 1`(A,secteur(3))++
+1`(B,secteur(5))
+</text>
+        </descriptor>
+        <roundbox w="45.000000"
+                  h="40.000000"/>
+      </ssnode>
+    </page>
+    <instances>
+      <instance id="ID2149"
+                page="ID6"/>
+    </instances>
+    <options>
+      <option name="realtimestamp">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="fair_be">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="global_fairness">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="outputdirectory">
+        <value>
+          <text>&lt;same as model&gt;</text>
+        </value>
+      </option>
+      <option name="extensions.10003.enable">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="extensions.10004.enable">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="extensions.10011.enable">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="extensions.10005.enable">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="extensions.10007.enable">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="extensions.10002.enable">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="extensions.10008.enable">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="extensions.10006.enable">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="extensions.10001.enable">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="extensions.10011.options.disable">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="extensions.10007.options.discover">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="repavg">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="repciavg">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="repcount">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="repfirstval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="replastval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="repmax">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="repmin">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="repssquare">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="repssqdev">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="repstddev">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="repsum">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="repvariance">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="avg">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="ciavg">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="count">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="firstval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="lastval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="max">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="min">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="ssquare">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="ssqdev">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="stddev">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="sum">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="variance">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="firstupdate">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="interval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="lastupdate">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedavg">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="untimedciavg">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedcount">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="untimedfirstval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedlastval">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedmax">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="untimedmin">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="untimedssquare">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedssqdev">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedstddev">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+      <option name="untimedsum">
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </option>
+      <option name="untimedvariance">
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </option>
+    </options>
+    <binders>
+      <cpnbinder id="ID1413331572"
+                 x="101"
+                 y="227"
+                 width="1534"
+                 height="682">
+        <sheets>
+          <cpnsheet id="ID1413331561"
+                    panx="-1072.000000"
+                    pany="119.500000"
+                    zoom="1.000000"
+                    instance="ID2149">
+            <zorder>
+              <position value="0"/>
+            </zorder>
+          </cpnsheet>
+        </sheets>
+        <zorder>
+          <position value="0"/>
+        </zorder>
+      </cpnbinder>
+    </binders>
+    <monitorblock name="Monitors"/>
+    <IndexNode expanded="true">
+      <IndexNode expanded="false"/>
+      <IndexNode expanded="false"/>
+      <IndexNode expanded="false">
+        <IndexNode expanded="false"/>
+        <IndexNode expanded="false"/>
+        <IndexNode expanded="false"/>
+        <IndexNode expanded="false"/>
+        <IndexNode expanded="false">
+          <IndexNode expanded="false">
+            <IndexNode expanded="false">
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+            </IndexNode>
+            <IndexNode expanded="false">
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+              <IndexNode expanded="false"/>
+            </IndexNode>
+          </IndexNode>
+          <IndexNode expanded="false">
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
+          </IndexNode>
+        </IndexNode>
+        <IndexNode expanded="false">
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+        </IndexNode>
+        <IndexNode expanded="false">
+          <IndexNode expanded="false"/>
+        </IndexNode>
+        <IndexNode expanded="false">
+          <IndexNode expanded="false"/>
+        </IndexNode>
+      </IndexNode>
+      <IndexNode expanded="false">
+        <IndexNode expanded="false"/>
+      </IndexNode>
+      <IndexNode expanded="true">
+        <IndexNode expanded="true"/>
+        <IndexNode expanded="true"/>
+        <IndexNode expanded="true"/>
+        <IndexNode expanded="true"/>
+        <IndexNode expanded="true"/>
+        <IndexNode expanded="true"/>
+        <IndexNode expanded="true"/>
+        <IndexNode expanded="true"/>
+        <IndexNode expanded="true">
+          <IndexNode expanded="false">
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+          </IndexNode>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+        </IndexNode>
+      </IndexNode>
+      <IndexNode expanded="true"/>
+      <IndexNode expanded="true"/>
+    </IndexNode>
+  </cpnet>
+</workspaceElements>

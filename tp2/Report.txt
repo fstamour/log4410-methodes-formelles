@@ -1,0 +1,90 @@
+CPN Tools state space report for:
+/cygdrive/C/Users/M.Psyco/Desktop/Places/LOG4410/log4410-methodes-formelles/tp2/Ex_1_3.cpn
+Report generated: Fri Nov 25 00:59:00 2016
+
+
+ Statistics
+------------------------------------------------------------------------
+
+  State Space
+     Nodes:  28
+     Arcs:   42
+     Secs:   1
+     Status: Full
+
+  Scc Graph
+     Nodes:  1
+     Arcs:   0
+     Secs:   0
+
+
+ Boundedness Properties
+------------------------------------------------------------------------
+
+  Best Integer Bounds
+                             Upper      Lower
+     Ex_1_3'E 1              5          5
+     Ex_1_3'O 1              2          2
+
+  Best Upper Multi-set Bounds
+     Ex_1_3'E 1          1`secteur(1)++
+1`secteur(2)++
+1`secteur(3)++
+1`secteur(4)++
+1`secteur(5)++
+1`secteur(6)++
+1`secteur(7)
+     Ex_1_3'O 1          1`(A,secteur(1))++
+1`(A,secteur(2))++
+1`(A,secteur(3))++
+1`(A,secteur(4))++
+1`(A,secteur(5))++
+1`(A,secteur(6))++
+1`(A,secteur(7))++
+1`(B,secteur(1))++
+1`(B,secteur(2))++
+1`(B,secteur(3))++
+1`(B,secteur(4))++
+1`(B,secteur(5))++
+1`(B,secteur(6))++
+1`(B,secteur(7))
+
+  Best Lower Multi-set Bounds
+     Ex_1_3'E 1          empty
+     Ex_1_3'O 1          empty
+
+
+ Home Properties
+------------------------------------------------------------------------
+
+  Home Markings
+     All
+
+
+ Liveness Properties
+------------------------------------------------------------------------
+
+  Dead Markings
+     None
+
+  Dead Transition Instances
+     None
+
+  Live Transition Instances
+     All
+
+
+ Fairness Properties
+------------------------------------------------------------------------
+
+  Impartial Transition Instances
+     Ex_1_3'Engager 1
+
+  Fair Transition Instances
+     None
+
+  Just Transition Instances
+     None
+
+  Transition Instances with No Fairness
+     None
