@@ -8,7 +8,7 @@
 \usepackage{graphicx}
 \usepackage[margin=1.50in]{geometry}
 \usepackage[]{algorithm2e}
-\usepackage{euler} 
+\usepackage{euler}
 \usepackage{xcolor}
 \usepackage{mathtools}
 \usepackage{amsmath, amsthm,amssymb}
@@ -21,10 +21,10 @@
 \mathtoolsset{showonlyrefs}
 \title{TP3 : Modélisation et analyse de systèmes à l'aide des réseaux de Petri}
 \author{
-    JEAN-LANGLOIS Joël
-    \and
-    ST-AMOUR Francis
-  }
+  JEAN-LANGLOIS Joël
+  \and
+  ST-AMOUR Francis
+}
 \date{25 novembre 2016}
 
 \begin{document}
@@ -43,127 +43,127 @@ Modèle de chemin de fer circulaire à deux train.
 \subsubsection{Modélisez ce système par un réseau de Petri. Simulez votre modèle.}
 Voir \textit{Ex\_1\_1.cpn} \\
 
-Afin de modéliser le système décrit avec un réseau de prétrit non-coloré, nous avons suivit la suggestion de l'énnoncé qui était de modéliser chaque secteur par trois place \textit{O\textsubscript{ia}}, \textit{O\textsubscript{ib}} et \textit{E\textsubscript{i}} et de deux transitions \textit{Engager\textsubscript{ia}} et \textit{Engager\textsubscript{ib}.}  La simulation s'est déroulée comme prévu, sans bloquage et sans collision entre les trains. 
-\subsubsection{Modélisez le même système par un réseau de Petri coloré. Simulez votre modèle. Comparez le avec celui obtenu 
-en 1.}
+Afin de modéliser le système décrit avec un réseau de prétrit non-coloré, nous avons suivit la suggestion de l'énnoncé qui était de modéliser chaque secteur par trois place \textit{O\textsubscript{ia}}, \textit{O\textsubscript{ib}} et \textit{E\textsubscript{i}} et de deux transitions \textit{Engager\textsubscript{ia}} et \textit{Engager\textsubscript{ib}.}  La simulation s'est déroulée comme prévu, sans bloquage et sans collision entre les trains.
+\subsubsection{Modélisez le même système par un réseau de Petri coloré. Simulez votre modèle. Comparez le avec celui obtenu
+  en 1.}
 Voir \textit{Ex\_1\_2.cpn} \\
 
 L'ajout de couleur au réseau de pétri de la question suivante permet de diminuer de moitié les transitions ainsi que les places du style \textit{O\textsubscript{ix}}. Les connections sont plus clairs puisqu'il y en a moins et l'ajout de type permet de s'assurer que les connections suivent bien la sémantique voulue.
-\subsubsection{Modélisez le même système par un réseau de Petri coloré à deux places O et E, et une seule transition 
-\textit{Engagez-vous dans le secteur suivant}. Simulez votre modèle.}
+\subsubsection{Modélisez le même système par un réseau de Petri coloré à deux places O et E, et une seule transition
+  \textit{Engagez-vous dans le secteur suivant}. Simulez votre modèle.}
 Voir \textit{Ex\_1\_3.cpn}
 \subsubsection{Indiquer les propriétés attendues de votre modèle et vérifier en utilisant l’outil.}
 Les propriétés attendues sont les suivantes:
 \begin{enumerate}
-	\item Prop1
-	\item Prop2
+\item Prop1
+\item Prop2
 \end{enumerate}
 
 
 
 \subsection{Exercice 2}
 Protocole de communication entre deux processus.
-\subsubsection{Modéliser le fonctionnement de ce protocole par un réseau de Petri. Montrer qu’il y a risque de 
-blocage.}
+\subsubsection{Modéliser le fonctionnement de ce protocole par un réseau de Petri. Montrer qu’il y a risque de
+  blocage.}
 Voir \textit{Ex\_2\_1.cpn}
 \begin{proof}
-Ce réseau possède un blocage puisque le marquage M' accessible à partir de $M_0$ sur la séquence de franchissements s = $t_1 
-t_2 t_3$
+  Ce réseau possède un blocage puisque le marquage M' accessible à partir de $M_0$ sur la séquence de franchissements s = $t_1
+  t_2 t_3$
 
-\begin{align*}
-M_0 &= \begin{pmatrix} 
-	1 \\ 
-	1 \\ 
-	0 \\
-	0 \\
-	0 \\
-	0   
-\end{pmatrix} \xrightarrow{t_1 t_2 t_3} 
-\begin{pmatrix} 
-	0 \\ 
-	0 \\ 
-	0 \\
-	0 \\
-	1 \\
-	1   
-\end{pmatrix} = M'
-\end{align*}
-est un marquage puit, duquel aucune transition n'est tirable puisque M' > Pre(t) $\forall$ t $\in$ T.
+  \begin{align*}
+    M_0 &= \begin{pmatrix}
+      1 \\
+      1 \\
+      0 \\
+      0 \\
+      0 \\
+      0
+    \end{pmatrix} \xrightarrow{t_1 t_2 t_3}
+    \begin{pmatrix}
+      0 \\
+      0 \\
+      0 \\
+      0 \\
+      1 \\
+      1
+    \end{pmatrix} = M'
+  \end{align*}
+  est un marquage puit, duquel aucune transition n'est tirable puisque M' > Pre(t) $\forall$ t $\in$ T.
 \end{proof}
-\subsubsection{Complétez le réseau précédent pour prendre en compte cette modification. Montrez que ce nouveau réseau est 
-vivant.}
+\subsubsection{Complétez le réseau précédent pour prendre en compte cette modification. Montrez que ce nouveau réseau est
+  vivant.}
 Voir \textit{Ex\_2\_2.cpn}
 \begin{proof}
-Le marquage initial de ce réseau est défini par $M_0(p1)$ = 1 > 0, $M_0(p2)$ = 1 > 0 et $M_0(p)$ = 0 pour toutes les autres 
-places p. On pose la norme
-\begin{align*}
-\mu(M) = 2M(p_3) + 2M(p_4) + M(p_5) + M(p_6)
-\end{align*}
-À partir des invariants de place
-\begin{align*}
-M(p_1) + M(p_2) + M(p_3) + M(p_4) + M(p_5) + M(p_6) &= 2 \\
-M(p_1) + M(p_3) + M(p_5) &= 1 \\
-M(p_2) + M(p_4) + M(p_6) &= 1
-\end{align*}
-la vérification de la première condition de la norme $\mu(M)$ = 0 ssi M = $M_0$ est triviale. Les cas possibles pour 
-$\mu$(M) > 0 et nécessairement M($p_1$) = M($p_2$) = 0 sont les 
-suivants:
-\begin{enumerate}
-\item M($p_3$) > 0 et M($p_6$) >= 0: $t_2$ est tirable et $\mu$ décroît. Si M($p_6$) > 0, $t_6$ est tirable et $\mu$ décroît.
-\item M($p_4$) > 0 et M($p_5$) >= 0: $t_3$ est tirable et $\mu$ décroît. Si M($p_5$) > 0, $t_4$ est tirable et $\mu$ décroît.
-\item M($p_5$) > 0 et M($p_6$) > 0: $t_5$ est tirable et $\mu$ décroît. 	
-\end{enumerate}
-On a montré que la fonction $\mu$ est une norme pour le marquage initial $M_0$, celui-ci est donc un marquage d'accueil. De 
-plus, le réseau est quasi-vivace car $\forall t \in T, \exists M \in R(N, M_0): M \xrightarrow{t}$
-\begin{align*}
-M_0 \xrightarrow{t_1} \\
-M_0 \xrightarrow{t_1} M' \xrightarrow{t_2} \\
-M_0 \xrightarrow{t_1} M' \xrightarrow{t_3} \\ 
-M_0 \xrightarrow{t_1 t_2} M' \xrightarrow{t_4} \\ 
-M_0 \xrightarrow{t_1 t_2 t_3} M' \xrightarrow{t_5} \\ 
-M_0 \xrightarrow{t_1 t_3} M' \xrightarrow{t_6} 
-\end{align*}
-Le réseau est donc vivace.
+  Le marquage initial de ce réseau est défini par $M_0(p1)$ = 1 > 0, $M_0(p2)$ = 1 > 0 et $M_0(p)$ = 0 pour toutes les autres
+  places p. On pose la norme
+  \begin{align*}
+    \mu(M) = 2M(p_3) + 2M(p_4) + M(p_5) + M(p_6)
+  \end{align*}
+  À partir des invariants de place
+  \begin{align*}
+    M(p_1) + M(p_2) + M(p_3) + M(p_4) + M(p_5) + M(p_6) &= 2 \\
+    M(p_1) + M(p_3) + M(p_5) &= 1 \\
+    M(p_2) + M(p_4) + M(p_6) &= 1
+  \end{align*}
+  la vérification de la première condition de la norme $\mu(M)$ = 0 ssi M = $M_0$ est triviale. Les cas possibles pour
+  $\mu$(M) > 0 et nécessairement M($p_1$) = M($p_2$) = 0 sont les
+  suivants:
+  \begin{enumerate}
+  \item M($p_3$) > 0 et M($p_6$) >= 0: $t_2$ est tirable et $\mu$ décroît. Si M($p_6$) > 0, $t_6$ est tirable et $\mu$ décroît.
+  \item M($p_4$) > 0 et M($p_5$) >= 0: $t_3$ est tirable et $\mu$ décroît. Si M($p_5$) > 0, $t_4$ est tirable et $\mu$ décroît.
+  \item M($p_5$) > 0 et M($p_6$) > 0: $t_5$ est tirable et $\mu$ décroît.
+  \end{enumerate}
+  On a montré que la fonction $\mu$ est une norme pour le marquage initial $M_0$, celui-ci est donc un marquage d'accueil. De
+  plus, le réseau est quasi-vivace car $\forall t \in T, \exists M \in R(N, M_0): M \xrightarrow{t}$
+  \begin{align*}
+    M_0 \xrightarrow{t_1} \\
+    M_0 \xrightarrow{t_1} M' \xrightarrow{t_2} \\
+    M_0 \xrightarrow{t_1} M' \xrightarrow{t_3} \\
+    M_0 \xrightarrow{t_1 t_2} M' \xrightarrow{t_4} \\
+    M_0 \xrightarrow{t_1 t_2 t_3} M' \xrightarrow{t_5} \\
+    M_0 \xrightarrow{t_1 t_3} M' \xrightarrow{t_6}
+  \end{align*}
+  Le réseau est donc vivace.
 \end{proof}
-\subsubsection{Calculez, pour cette seconde version une base de l’espace des invariants de places. En déduire que le réseau 
-est 1-borné.}
+\subsubsection{Calculez, pour cette seconde version une base de l’espace des invariants de places. En déduire que le réseau
+  est 1-borné.}
 \begin{table}[h!]
-	\centering
-	\begin{tabular}{|>{\columncolor{lightgray}}c|c c c c c c|c c c|}
-		\hline \rowcolor{lightgray}
-		& $t_1$ & $t_2$ & $t_3$ & $t_4$ & $t_5$ & $t_6$ & $\vec{i_1}$ & $\vec{i_2}$ & $\vec{i_3}$ \\ \hline
-		$p_1$ & -1 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0   \\ \hline
-		$p_2$ & -1 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 1   \\ \hline
-		$p_3$ & 1 & -1 & 0 & 0 & 0 & -1 & 1 & 1 & 0   \\ \hline
-		$p_4$ & 1 & 0 & -1 & -1 & 0 & 0 & 1 & 0 & 1   \\ \hline
-		$p_5$ & 0 & 1 & 0 & -1 & -1 & 0 & 1 & 1 & 0   \\ \hline
-		$p_6$ & 0 & 0 & 1 & 0 & -1 & -1 & 1 & 0 & 1   \\ \hline
-	\end{tabular}
-	\caption{Espace des invariants de places}
+  \centering
+  \begin{tabular}{|>{\columncolor{lightgray}}c|c c c c c c|c c c|}
+    \hline \rowcolor{lightgray}
+    & $t_1$ & $t_2$ & $t_3$ & $t_4$ & $t_5$ & $t_6$ & $\vec{i_1}$ & $\vec{i_2}$ & $\vec{i_3}$ \\ \hline
+    $p_1$ & -1 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0   \\ \hline
+    $p_2$ & -1 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 1   \\ \hline
+    $p_3$ & 1 & -1 & 0 & 0 & 0 & -1 & 1 & 1 & 0   \\ \hline
+    $p_4$ & 1 & 0 & -1 & -1 & 0 & 0 & 1 & 0 & 1   \\ \hline
+    $p_5$ & 0 & 1 & 0 & -1 & -1 & 0 & 1 & 1 & 0   \\ \hline
+    $p_6$ & 0 & 0 & 1 & 0 & -1 & -1 & 1 & 0 & 1   \\ \hline
+  \end{tabular}
+  \caption{Espace des invariants de places}
 \end{table}
 \begin{proof}
-L'invariant $\vec{i_1}(p)$ = 1 > 0 $\forall$ p indique que le réseau est borné. On démontre à l'aide des invariants 
-$\vec{i_2}$ et $\vec{i_3}$ que le réseau est 1-borné puisque l'ensemble des places le sont: 
-\begin{align*}
-M(p_i),i \in \{1,3,5\} \leq \frac{\vec{i_2} * M_0}{\vec{i_2}(p_i)} = (1, 0, 1, 0, 1, 0) * 
-	\begin{pmatrix} 
-	1 \\ 
-	1 \\ 
-	0 \\
-	0 \\
-	0 \\
-	0   
-	\end{pmatrix} = 1 \\
-M(p_i),i \in \{2,4,6\} \leq \frac{\vec{i_3} * M_0}{\vec{i_3}(p_i)} = (0, 1, 0, 1, 0, 1) * 
-\begin{pmatrix} 
-1 \\ 
-1 \\ 
-0 \\
-0 \\
-0 \\
-0   
-\end{pmatrix} = 1 
-\end{align*}
+  L'invariant $\vec{i_1}(p)$ = 1 > 0 $\forall$ p indique que le réseau est borné. On démontre à l'aide des invariants
+  $\vec{i_2}$ et $\vec{i_3}$ que le réseau est 1-borné puisque l'ensemble des places le sont:
+  \begin{align*}
+    M(p_i),i \in \{1,3,5\} \leq \frac{\vec{i_2} * M_0}{\vec{i_2}(p_i)} = (1, 0, 1, 0, 1, 0) *
+    \begin{pmatrix}
+      1 \\
+      1 \\
+      0 \\
+      0 \\
+      0 \\
+      0
+    \end{pmatrix} = 1 \\
+    M(p_i),i \in \{2,4,6\} \leq \frac{\vec{i_3} * M_0}{\vec{i_3}(p_i)} = (0, 1, 0, 1, 0, 1) *
+    \begin{pmatrix}
+      1 \\
+      1 \\
+      0 \\
+      0 \\
+      0 \\
+      0
+    \end{pmatrix} = 1
+  \end{align*}
 \end{proof}
 \subsubsection{Modélisez le protocole dans sa deuxième version à l’aide d’un réseau coloré.}
 Voir \textit{Ex\_2\_4.cpn}
@@ -173,69 +173,69 @@ Voir \textit{Ex\_2\_4.cpn}
 
 \subsection{Exercice 3}
 Modèle d'un Grand Prix F1
-\subsubsection{Représentez par un réseau de Petri coloré l’avancement d’une voiture sur le circuit (il n’y a pas de 
-limitation aux nombres de voitures qui peuvent occuper la même section). Vous préciserez les ensembles de couleurs que vous 
-utilisez, le domaine de couleur des places et le marquage initial du réseau.}
+\subsubsection{Représentez par un réseau de Petri coloré l’avancement d’une voiture sur le circuit (il n’y a pas de
+  limitation aux nombres de voitures qui peuvent occuper la même section). Vous préciserez les ensembles de couleurs que vous
+  utilisez, le domaine de couleur des places et le marquage initial du réseau.}
 Voir \textit{Ex\_3\_1.cpn}
 \begin{flalign}
-&Clr(p_1) = \{SECTION, VOITURE\}\quad donc\quad\{1..N-1\} x \{1..M\}& \\
-&M_0 = \begin{pmatrix} 
-<0, 1> + <0, 2> + ... + <0, M> \\
-\end{pmatrix}&
+  &Clr(p_1) = \{SECTION, VOITURE\}\quad donc\quad\{1..N-1\} x \{1..M\}& \\
+  &M_0 = \begin{pmatrix}
+    <0, 1> + <0, 2> + ... + <0, M> \\
+  \end{pmatrix}&
 \end{flalign}
 \subsubsection{On considère à partir de maintenant qu’une fois le départ donné (toutes
-les voitures ont quitté la section 0), il ne doit jamais y avoir plus d’une
-voiture par section.Quelle contrainte cela introduit-il dans la règle d’avancement ? Modifiez votre modèle pour prendre en 
-compte 
-cette nouvelle contrainte.}
+  les voitures ont quitté la section 0), il ne doit jamais y avoir plus d’une
+  voiture par section.Quelle contrainte cela introduit-il dans la règle d’avancement ? Modifiez votre modèle pour prendre en
+  compte
+  cette nouvelle contrainte.}
 Voir \textit{Ex\_3\_2.cpn} \\
-Cette nouvelle considération implique qu'il faudra que la transition ait accès à la voiture concernée par l'avancement, en 
-plus d'avoir accès au contenu de la section suivante afin d'ajouter une garde sur la transition. Nous avons donc modifié 
-notre paradigme pour que le RdPC reflète cette contrainte. Le domaine des couleurs pour la place $p_1$ est maintenant la 
-produit cartésien du domaine des couleurs des SECTION avec le domaine de couleurs VOITURES d'une liste de jetons de la 
-couleur 
+Cette nouvelle considération implique qu'il faudra que la transition ait accès à la voiture concernée par l'avancement, en
+plus d'avoir accès au contenu de la section suivante afin d'ajouter une garde sur la transition. Nous avons donc modifié
+notre paradigme pour que le RdPC reflète cette contrainte. Le domaine des couleurs pour la place $p_1$ est maintenant la
+produit cartésien du domaine des couleurs des SECTION avec le domaine de couleurs VOITURES d'une liste de jetons de la
+couleur
 VOITURE.
 \begin{flalign}
-  &Clr(p_1) = \{SECTION, VOITURES\}\cr
-  &\quad avec\quad\{1..N-1\} x \{[VOITURE^{0..M}]_1,
-[VOITURES^{0..M}]_2,...,[VOITURES^{0..M}]_{N-1}\}& \\
-&M_0 = \begin{pmatrix} 
-<0, [<v_1> + <v_2> + <v_3>+...+<v_M>]> + <1, []> + ... + <N-1, []> \\
-\end{pmatrix}&
-\end{flalign} 
-De cette manière, il est possible de mettre une garde sur la transition de manière à ce qu'on puisse considérer les 
-caractéristiques de la section suivante (et de sa liste de voiture(s)) simultanément à la section retenue. Il a ensuite 
-suffit d'utiliser un bloc de code sur la transition pour sélectionner de façon non-déterministe la voiture retenue pour 
+  &Clr(p_1) = \{SECTION, VOITURES\}
+  \quad avec\quad\{1..N-1\} x \{[VOITURE^{0..M}]_1,
+        [VOITURES^{0..M}]_2,...,[VOITURES^{0..M}]_{N-1}\}& \\
+        &M_0 = \begin{pmatrix}
+          <0, [<v_1> + <v_2> + <v_3>+...+<v_M>]> + <1, []> + ... + <N-1, []> \\
+        \end{pmatrix}&
+\end{flalign}
+De cette manière, il est possible de mettre une garde sur la transition de manière à ce qu'on puisse considérer les
+caractéristiques de la section suivante (et de sa liste de voiture(s)) simultanément à la section retenue. Il a ensuite
+suffit d'utiliser un bloc de code sur la transition pour sélectionner de façon non-déterministe la voiture retenue pour
 avancement dans la liste des voitures de la section courante et de la transférer à la section suivante:
 \begin{lstlisting}
-// guard
-[ v1<>[] 
-  andalso 
-  List.null v2 
-  andalso 
-  if lastSection(sec1) then sec2=0 
-  else sec2=sec1+1 ] 
-  
-// code segment
-input (v1);
-output(car_idx);
-action
-discrete (0, (length v1)-1)
+  // guard
+  [ v1<>[]
+    andalso
+    List.null v2
+    andalso
+    if lastSection(sec1) then sec2=0
+    else sec2=sec1+1 ]
+
+  // code segment
+  input (v1);
+  output(car_idx);
+  action
+  discrete (0, (length v1)-1)
 \end{lstlisting}
-\subsubsection{Lorsqu’une voiture se trouve sur la section 0, elle peut choisir de rentrer aux stands. Proposez une 
-modélisation de cette action qui ne casse pas la structure circulaire du circuit (la section 0 se trouve toujours entre les 
-sections N $-$ 1 et 1)}
+\subsubsection{Lorsqu’une voiture se trouve sur la section 0, elle peut choisir de rentrer aux stands. Proposez une
+  modélisation de cette action qui ne casse pas la structure circulaire du circuit (la section 0 se trouve toujours entre les
+  sections N $-$ 1 et 1)}
 Voir \textit{Ex\_3\_3.cpn}
-\subsubsection{La sortie des stands se fait dans la section 1 et n’est possible que si cette section est vide. Ajoutez cette 
-opération dans votre modèle.}
+\subsubsection{La sortie des stands se fait dans la section 1 et n’est possible que si cette section est vide. Ajoutez cette
+  opération dans votre modèle.}
 Voir \textit{Ex\_3\_4.cpn} \\
-\subsubsection{Construisez la partie du modèle qui 
-représente un dépassement.}
+\subsubsection{Construisez la partie du modèle qui
+  représente un dépassement.}
 Voir \textit{Ex\_3\_5.cpn} \\
-\subsubsection{Dépliez la partie du réseau qui représente le dépassement de Hamilton par Raïkkönen lorsque Hamilton est dans 
-la section 3. Vous veillerez à donner des noms significatifs aux places du réseau.}
+\subsubsection{Dépliez la partie du réseau qui représente le dépassement de Hamilton par Raïkkönen lorsque Hamilton est dans
+  la section 3. Vous veillerez à donner des noms significatifs aux places du réseau.}
 Voir \textit{Ex\_3\_6.cpn} \\
 \section{Conclusion}
-Finalement, 
+Finalement,
 
 \end{document}
